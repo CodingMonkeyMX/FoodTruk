@@ -1,20 +1,13 @@
 
-public class Entrees extends TestFood /*implements Dishterface*/ {
+public class Entrees /*implements Dishterface*/ {
 
+    private Display display;
+    
+    private String[] entrees = {"hot dog", "elote", "Wonton soup"};
+    private double[] prices = {3.99, 4.99, 7.99};
 
-    // variables
-    public static int numEntrees = 0;
-
-
-    public Entrees(String name, double cost, String size) {
-        super(cost,name,size);
-        numEntrees++;
+    public Entrees(Display display) {
+        this.display = display;  // Store reference to GUI
     }
 
-
 }
-
-
-
-
-
