@@ -4,15 +4,33 @@ import java.awt.*;
 
 public class Display extends JFrame {
     private JLabel order;
-
-
+    private JLabel title;
     public Display() {
-        setBounds(0,0,1000,1500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(null);
+        // initializing GUI's
+            setBounds(0, 0, 500, 600);
+            setDefaultCloseOperation(EXIT_ON_CLOSE);
+            setLayout(null);
+
+            title = new JLabel("FoodTruck App");
+            title.setBounds(0, 0, 475, 40);
+            this.add(title);
+            title.setFont(new Font("Helvetica", Font.BOLD, 36));
+
+/*      // text input area
+            dogDisplay = new JTextArea(giveDogDisplay(1));
+            dogDisplay.setBounds(50, 50, 400, 350);
+            this.add(dogDisplay);
+            dogDisplay.setFont(new Font("Helvetica", Font.BOLD, 16));
+            dogDisplay.setEditable(false);
+*/
 
 
-
+        // default button
+/*          feed = new JButton("Feed");
+            feed.setBounds(50, 500, 70, 40);
+            this.add(feed);
+            feed.addActionListener(this);
+*/
 
     }
 }
