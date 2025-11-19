@@ -1,4 +1,4 @@
-public class Desserts extends TestFood /*implements Dishterface*/ {
+public class Desserts  /*implements Dishterface*/ {
 
 
     // variables
