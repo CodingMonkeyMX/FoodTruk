@@ -7,14 +7,14 @@ public class Display extends JFrame {
     private JLabel title;
     public Display() {
         // initializing GUI's
-            setBounds(0, 0, 500, 600);
+            setBounds(0, 0, 900, 600);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLayout(null);
 
             title = new JLabel("FoodTruck App");
-            title.setBounds(0, 0, 475, 40);
+            title.setBounds(212, 0, 475, 40);
             this.add(title);
-            title.setFont(new Font("Helvetica", Font.BOLD, 36));
+            title.setFont(new Font("Arial", Font.BOLD, 24));
 
 /*      // text input area
             dogDisplay = new JTextArea(giveDogDisplay(1));
