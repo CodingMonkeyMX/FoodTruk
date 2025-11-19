@@ -1,14 +1,8 @@
-public class Drinks extends TestFood /*implements Dishterface*/ {
+public class Drinks  {
 
-
-    // variables
-    public static int numDrinks = 0;
-
-
-    public Drinks(String name, double cost, String size) {
-        super(cost,name,size);
-        numDrinks++;
-    }
+    private Display display;
+    private String[] drinks = {"Chinease fountain water", "j u i c e", "Mango nada"};
+    private double[] prices = {13.99, 4.99, 27.99};
 
 
 }

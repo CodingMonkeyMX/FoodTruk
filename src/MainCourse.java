@@ -1,4 +1,4 @@
-public class MainCourse extends TestFood /*implements Dishterface*/ {
+public class MainCourse  /*implements Dishterface*/ {
 
 
     // variables

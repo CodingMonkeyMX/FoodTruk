@@ -1,15 +1,7 @@
-public class Desserts extends TestFood /*implements Dishterface*/ {
+public class Desserts {
 
-
-    // variables
-    public static int numDesserts = 0;
-
-
-    public Desserts(String name, double cost, String size) {
-        super(cost,name,size);
-        numDesserts++;
-    }
-
+    public String [] Deserts = {"Lemur ankle ice cream*", "horse fur creme brulee*", " Asbestos molten cake*"};
+    public double [] prices = {3.49, 79.99, 1.67};
 
 }
 
