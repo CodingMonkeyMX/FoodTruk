@@ -31,6 +31,6 @@ public class Display extends JFrame {
             this.add(feed);
             feed.addActionListener(this);
 */
-
+        setVisible(true);
     }
 }
