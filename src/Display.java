@@ -20,6 +20,7 @@ public class Display extends JFrame {
             menuPanel = new JPanel();
             menuPanel.setBounds(50,100,400,400);
             menuPanel.setLayout(new GridLayout(4,1));
+            menuPanel.setBorder(BorderFactory.createLineBorder(Color.black));
             this.add(menuPanel);
 /*      // text input area
             dogDisplay = new JTextArea(giveDogDisplay(1));
