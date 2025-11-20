@@ -13,7 +13,7 @@ public class Display extends JFrame {
             setLayout(null);
 
             title = new JLabel("FoodTruck App");
-            title.setBounds(212, 0, 475, 40);
+            title.setBounds(360, 0, 250, 40);
             this.add(title);
             title.setFont(new Font("Arial", Font.BOLD, 24));
 
