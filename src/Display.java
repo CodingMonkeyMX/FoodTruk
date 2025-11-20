@@ -7,7 +7,7 @@ public class Display extends JFrame {
     private JLabel title;
     private JPanel menuPanel;
     private JPanel buttonBar;
-    private JTextPane receipt;
+    private JPanel receipt;
     public Display() {
         // initializing GUI's
             setBounds(0, 0, 900, 600);
@@ -20,22 +20,23 @@ public class Display extends JFrame {
             title.setFont(new Font("Arial", Font.BOLD, 24));
 
             menuPanel = new JPanel();
-            menuPanel.setBounds(50,100,400,400);
+            menuPanel.setBounds(50,70,400,400);
             menuPanel.setLayout(new GridLayout(4,1));
             menuPanel.setBorder(BorderFactory.createLineBorder(Color.black));
             this.add(menuPanel);
 
-        receipt = new JPanel();
-        menuPanel.setBounds(50,100,400,400);
-        menuPanel.setLayout(new GridLayout(4,1));
-        menuPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        this.add(menuPanel);
+            receipt = new JPanel();
+            receipt.setBounds(460,70,400,400);
+            receipt.setLayout(null);
+            receipt.setBorder(BorderFactory.createLineBorder(Color.black));
+            this.add(receipt);
 
-        menuPanel = new JPanel();
-        menuPanel.setBounds(50,505,800,52);
-        menuPanel.setLayout(new FlowLayout());
-        menuPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-        this.add(menuPanel);
+
+            buttonBar = new JPanel();
+            buttonBar.setBounds(50,475,810,52);
+            buttonBar.setLayout(new FlowLayout());
+            buttonBar.setBorder(BorderFactory.createLineBorder(Color.black));
+            this.add(buttonBar);
 /*      // text input area
             dogDisplay = new JTextArea(giveDogDisplay(1));
             dogDisplay.setBounds(50, 50, 400, 350);
