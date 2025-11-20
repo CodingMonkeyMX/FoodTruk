@@ -8,6 +8,9 @@ public class Display extends JFrame {
     private JPanel menuPanel;
     private JPanel buttonBar;
     private JPanel receipt;
+    private JButton checkOut;
+    private JButton clearOrder;
+    private JButton exit;
 
     private JTextArea receiptInfo;
     private JLabel total;
@@ -50,6 +53,29 @@ public class Display extends JFrame {
             total.setBounds(5, 360, 250, 40);
             receipt.add(total);
             total.setFont(new Font("Arial", Font.BOLD, 24));
+
+            checkOut = new JButton("CHECKOUT");
+            clearOrder = new JButton("CLEAR ORDER");
+            exit = new JButton("EXIT");
+
+            checkOut.setFont(new Font("Arial", Font.BOLD, 14));
+            clearOrder.setFont(new Font("Arial", Font.BOLD, 14));
+            exit.setFont(new Font("Arial", Font.BOLD, 14));
+
+            checkOut.setBackground(new Color(76, 175, 80));
+            checkOut.setForeground(Color.WHITE);
+            clearOrder.setBackground(new Color(255, 152, 0));
+            clearOrder.setForeground(Color.WHITE);
+            exit.setBackground(new Color(244, 67, 54));
+            exit.setForeground(Color.WHITE);
+
+           /* checkOut.addActionListener(e -> checkout());
+            clearOrder.addActionListener(e -> clearOrder());*/
+            exit.addActionListener(e -> System.exit(0));
+
+            buttonBar.add(checkOut);
+            buttonBar.add(clearOrder);
+            buttonBar.add(exit);
 
         // default button
 /*          feed = new JButton("Feed");
