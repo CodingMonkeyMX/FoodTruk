@@ -8,6 +8,9 @@ public class Display extends JFrame {
     private JPanel menuPanel;
     private JPanel buttonBar;
     private JPanel receipt;
+
+    private JTextArea receiptInfo;
+    private JLabel total;
     public Display() {
         // initializing GUI's
             setBounds(0, 0, 900, 600);
@@ -37,14 +40,16 @@ public class Display extends JFrame {
             buttonBar.setLayout(new FlowLayout());
             buttonBar.setBorder(BorderFactory.createLineBorder(Color.black));
             this.add(buttonBar);
-/*      // text input area
-            dogDisplay = new JTextArea(giveDogDisplay(1));
-            dogDisplay.setBounds(50, 50, 400, 350);
-            this.add(dogDisplay);
-            dogDisplay.setFont(new Font("Helvetica", Font.BOLD, 16));
-            dogDisplay.setEditable(false);
-*/
 
+            receiptInfo = new JTextArea("Asbestos: $0.99");
+            receiptInfo.setBounds(5, 5, 390, 350);
+            receiptInfo.setEditable(false);
+            receipt.add(receiptInfo);
+
+            total = new JLabel("Total: 1.12$");
+            total.setBounds(5, 360, 250, 40);
+            receipt.add(total);
+            total.setFont(new Font("Arial", Font.BOLD, 24));
 
         // default button
 /*          feed = new JButton("Feed");
