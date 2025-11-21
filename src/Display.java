@@ -11,6 +11,10 @@ public class Display extends JFrame {
     private JButton checkOut;
     private JButton clearOrder;
     private JButton exit;
+    private JButton entrees;
+    private JButton mains;
+    private JButton desserts;
+    private JButton drinks;
 
     private JTextArea receiptInfo;
     private JLabel total;
@@ -28,24 +32,23 @@ public class Display extends JFrame {
             menuPanel = new JPanel();
             menuPanel.setBounds(50,70,400,400);
             menuPanel.setLayout(new GridLayout(4,1));
-            menuPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+            menuPanel.setBorder(BorderFactory.createTitledBorder("Menu"));
             this.add(menuPanel);
 
             receipt = new JPanel();
             receipt.setBounds(460,70,400,400);
             receipt.setLayout(null);
-            receipt.setBorder(BorderFactory.createLineBorder(Color.black));
+            receipt.setBorder(BorderFactory.createTitledBorder("Order"));
             this.add(receipt);
 
 
             buttonBar = new JPanel();
-            buttonBar.setBounds(50,475,810,52);
+            buttonBar.setBounds(50,500,810,52);
             buttonBar.setLayout(new FlowLayout());
-            buttonBar.setBorder(BorderFactory.createLineBorder(Color.black));
             this.add(buttonBar);
 
             receiptInfo = new JTextArea("Asbestos: $0.99");
-            receiptInfo.setBounds(5, 5, 390, 350);
+            receiptInfo.setBounds(5, 17, 390, 350);
             receiptInfo.setEditable(false);
             receipt.add(receiptInfo);
 
@@ -76,6 +79,29 @@ public class Display extends JFrame {
             buttonBar.add(checkOut);
             buttonBar.add(clearOrder);
             buttonBar.add(exit);
+
+            // menu panel buttons
+            entrees = new JButton("Entrees");
+            mains = new JButton("Mains");
+            desserts = new JButton("Desserts");
+            drinks = new JButton("Drinks");
+
+            entrees.setBackground(Color.white);
+            mains.setBackground(Color.white);
+            desserts.setBackground(Color.white);
+            drinks.setBackground(Color.WHITE);
+
+            entrees.setBorder(BorderFactory.createRaisedBevelBorder());
+            mains.setBorder(BorderFactory.createRaisedBevelBorder());
+            desserts.setBorder(BorderFactory.createRaisedBevelBorder());
+            drinks.setBorder(BorderFactory.createRaisedBevelBorder());
+
+            menuPanel.add(entrees);
+            menuPanel.add(mains);
+            menuPanel.add(desserts);
+            menuPanel.add(drinks);
+
+
 
         // default button
 /*          feed = new JButton("Feed");
