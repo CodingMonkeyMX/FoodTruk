@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 public class Display extends JFrame {
@@ -18,13 +19,66 @@ public class Display extends JFrame {
 
     private JTextArea receiptInfo;
     private JLabel total;
+    private ArrayList<OrderItem> orderList;
+    private double totalAmount;
+
+    private class OrderItem {
+        String name;
+        double price;
+        int quantity;
+
+        OrderItem(String name, double price, int quantity) {
+            this.name = name;
+            this.price = price;
+            this.quantity = quantity;
+        }
+    }
+
     private void clearOrder() {
         receiptInfo.setText("");
         total.setText("Total: $0.00");
+        orderList.clear();
+        totalAmount = 0.0;
     }
 
+    public void addToOrder(String itemName, double price, int quantity) {
+        // Check if item already exists in order
+        boolean found = false;
+        for (OrderItem item : orderList) {
+            if (item.name.equals(itemName)) {
+                item.quantity += quantity;
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            orderList.add(new OrderItem(itemName, price, quantity));
+        }
+
+        updateReceipt();
+    }
+    private void updateReceipt() {
+        StringBuilder receipt = new StringBuilder();
+        totalAmount = 0.0;
+
+        for (OrderItem item : orderList) {
+            double itemTotal = item.price * item.quantity;
+            totalAmount += itemTotal;
+            receipt.append(String.format("%dx %s - $%.2f\n",
+                    item.quantity, item.name, itemTotal));
+        }
+
+        receiptInfo.setText(receipt.toString());
+        total.setText(String.format("Total: $%.2f", totalAmount));
+    }
+
+
     public Display() {
-        // initializing GUI's
+            // Initialize order list
+            orderList = new ArrayList<>();
+            totalAmount = 0.0;
+            // initializing GUI's
             setBounds(0, 0, 900, 600);
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLayout(null);
@@ -106,7 +160,7 @@ public class Display extends JFrame {
             menuPanel.add(desserts);
             menuPanel.add(drinks);
 
-
+            entrees.addActionListener(e -> new Entrees(this));
 
         // default button
 /*          feed = new JButton("Feed");
