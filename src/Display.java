@@ -18,6 +18,11 @@ public class Display extends JFrame {
 
     private JTextArea receiptInfo;
     private JLabel total;
+    private void clearOrder() {
+        receiptInfo.setText("");
+        total.setText("Total: $0.00");
+    }
+
     public Display() {
         // initializing GUI's
             setBounds(0, 0, 900, 600);
@@ -72,8 +77,8 @@ public class Display extends JFrame {
             exit.setBackground(new Color(244, 67, 54));
             exit.setForeground(Color.WHITE);
 
-           /* checkOut.addActionListener(e -> checkout());
-            clearOrder.addActionListener(e -> clearOrder());*/
+           /* checkOut.addActionListener(e -> checkout()); */
+            clearOrder.addActionListener(e -> clearOrder());
             exit.addActionListener(e -> System.exit(0));
 
             buttonBar.add(checkOut);
