@@ -110,7 +110,7 @@ public class Display extends JFrame {
             receiptInfo.setEditable(false);
             receipt.add(receiptInfo);
 
-            total = new JLabel("Total: 1.12$");
+            total = new JLabel("Total: $0.00");
             total.setBounds(5, 360, 250, 40);
             receipt.add(total);
             total.setFont(new Font("Arial", Font.BOLD, 24));
@@ -159,9 +159,10 @@ public class Display extends JFrame {
             menuPanel.add(desserts);
             menuPanel.add(drinks);
 
-            entrees.addActionListener(e -> new Entrees(this));
+            entrees.addActionListener(e -> new Desserts(this));
             mains.addActionListener(e -> new MainCourse(this));
-
+            desserts.addActionListener(e -> new Desserts(this));
+            drinks.addActionListener(e -> new Drinks(this));
         setVisible(true);
     }
 }
