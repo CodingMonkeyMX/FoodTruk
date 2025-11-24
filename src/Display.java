@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 
 public class Display extends JFrame {
-    private JLabel order;
-    private JLabel title;
+    private final JLabel title;
     private JPanel menuPanel;
     private JPanel buttonBar;
     private JPanel receipt;
@@ -106,7 +105,7 @@ public class Display extends JFrame {
             buttonBar.setLayout(new FlowLayout());
             this.add(buttonBar);
 
-            receiptInfo = new JTextArea("Asbestos: $0.99");
+            receiptInfo = new JTextArea("");
             receiptInfo.setBounds(5, 17, 390, 350);
             receiptInfo.setEditable(false);
             receipt.add(receiptInfo);
