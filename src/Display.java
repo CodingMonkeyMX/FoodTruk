@@ -40,6 +40,21 @@ public class Display extends JFrame {
         totalAmount = 0.0;
     }
 
+
+
+    private void Checkout() {
+        receiptInfo.setText("Thank you for dining with us");
+
+        JOptionPane.showMessageDialog(
+                this,
+                "Thank you for dining with us! The app will now close.",
+                "Checkout Complete",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+        dispose();
+    }
+
     public void addToOrder(String itemName, double price, int quantity) {
         // Check if item already exists in order
         boolean found = false;
@@ -133,6 +148,7 @@ public class Display extends JFrame {
            /* checkOut.addActionListener(e -> checkout()); */
             clearOrder.addActionListener(e -> clearOrder());
             exit.addActionListener(e -> System.exit(0));
+        checkOut.addActionListener(e -> Checkout());
 
             buttonBar.add(checkOut);
             buttonBar.add(clearOrder);
