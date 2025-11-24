@@ -160,13 +160,8 @@ public class Display extends JFrame {
             menuPanel.add(drinks);
 
             entrees.addActionListener(e -> new Entrees(this));
+            mains.addActionListener(e -> new MainCourse(this));
 
-        // default button
-/*          feed = new JButton("Feed");
-            feed.setBounds(50, 500, 70, 40);
-            this.add(feed);
-            feed.addActionListener(this);
-*/
         setVisible(true);
     }
 }
