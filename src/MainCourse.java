@@ -4,7 +4,7 @@ import java.awt.*;
 public class MainCourse extends JFrame {
     private Display display;
     private String[] mainCourse = {"Burger", "Pizza", "Steak"};
-    private double[] prices = {3.99, 4.99, 7.99};
+    private double[] prices = {14.99, 13.99, 29.99};
 
     public MainCourse(Display display) {
         this.display = display;
