@@ -43,9 +43,8 @@ public class Display extends JFrame {
 
 
     private void Checkout() {
-        receiptInfo.setText("Thank you for dining with us");
-        JOptionPane.showMessageDialog( this,  "Thank you for dining with us! The app will now close.",  "Checkout Complete",  JOptionPane.INFORMATION_MESSAGE );
-        dispose();
+        new Checkout(orderList, receiptInfo.getText(), totalAmount);
+            dispose();
     }
 
     public void addToOrder(String itemName, double price, int quantity) {
