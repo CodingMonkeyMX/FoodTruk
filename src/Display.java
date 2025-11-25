@@ -44,14 +44,7 @@ public class Display extends JFrame {
 
     private void Checkout() {
         receiptInfo.setText("Thank you for dining with us");
-
-        JOptionPane.showMessageDialog(
-                this,
-                "Thank you for dining with us! The app will now close.",
-                "Checkout Complete",
-                JOptionPane.INFORMATION_MESSAGE
-        );
-
+        JOptionPane.showMessageDialog( this,  "Thank you for dining with us! The app will now close.",  "Checkout Complete",  JOptionPane.INFORMATION_MESSAGE );
         dispose();
     }
 
@@ -148,7 +141,7 @@ public class Display extends JFrame {
            /* checkOut.addActionListener(e -> checkout()); */
             clearOrder.addActionListener(e -> clearOrder());
             exit.addActionListener(e -> System.exit(0));
-        checkOut.addActionListener(e -> Checkout());
+            checkOut.addActionListener(e -> Checkout());
 
             buttonBar.add(checkOut);
             buttonBar.add(clearOrder);
@@ -179,6 +172,7 @@ public class Display extends JFrame {
             mains.addActionListener(e -> new MainCourse(this));
             desserts.addActionListener(e -> new Desserts(this));
             drinks.addActionListener(e -> new Drinks(this));
+
         setVisible(true);
     }
 }
