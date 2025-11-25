@@ -5,14 +5,14 @@ public class Desserts extends JFrame {
     private Display display;
     private String[] desserts = {"Ice Cream", "Cheesecake", "Tres Leches"};
     private double[] prices = {7.99, 9.99, 6.99};
-    private String[] imagePath = {"","",""};
+    private String[] imagePath = {"images/iceCream.jpg","images/cheeseCake.jpg","images/tresLeches.jpg"};
 
     public Desserts(Display display) {
         this.display = display;
 
         // Set up the frame
         setTitle("Desserts Menu");
-        setBounds(100, 100, 450, 800);
+        setBounds(100, 100, 500, 800);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
