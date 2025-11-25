@@ -12,7 +12,7 @@ public class Desserts extends JFrame {
 
         // Set up the frame
         setTitle("Desserts Menu");
-        setBounds(100, 100, 450, 800);
+        setBounds(100, 100, 500, 800);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
