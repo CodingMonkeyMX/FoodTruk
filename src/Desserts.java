@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class Desserts extends JFrame {
     private Display display;
-    private String[] desserts = {"Hot Dog", "Elote", "Wonton Soup"};
-    private double[] prices = {3.99, 4.99, 7.99};
+    private String[] desserts = {"Ice Cream", "Cheesecake", "Tres Leches"};
+    private double[] prices = {7.99, 9.99, 6.99};
     private String[] imagePath = {"","",""};
 
     public Desserts(Display display) {
