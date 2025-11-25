@@ -5,6 +5,7 @@ public class Drinks extends JFrame {
     private Display display;
     private String[] drinks = {"Hot Dog", "Elote", "Wonton Soup"};
     private double[] prices = {3.99, 4.99, 7.99};
+    private String[] imagePath = {"","",""};
 
     public Drinks(Display display) {
         this.display = display;
@@ -28,7 +29,7 @@ public class Drinks extends JFrame {
 
         // Create MenuItem for each entree
         for (int i = 0; i < drinks.length; i++) {
-            MenuItem item = new MenuItem(drinks[i], prices[i], display);
+            MenuItem item = new MenuItem(drinks[i], prices[i],imagePath[i], display);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }

@@ -168,7 +168,7 @@ public class Display extends JFrame {
             menuPanel.add(desserts);
             menuPanel.add(drinks);
 
-            entrees.addActionListener(e -> new Desserts(this));
+            entrees.addActionListener(e -> new Entrees(this));
             mains.addActionListener(e -> new MainCourse(this));
             desserts.addActionListener(e -> new Desserts(this));
             drinks.addActionListener(e -> new Drinks(this));
