@@ -24,7 +24,7 @@ public class Checkout extends JFrame {
         JTextArea receiptArea = new JTextArea();
         receiptArea.setEditable(false);
         receiptArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
-        receiptArea.setText(receiptText + "\n\nTotal: $" + String.format("%.2f", totalAmount));
+        receiptArea.setText(receiptText + "------------------------------------------------" + "\n\nAmount: " + String.format("%.2f", totalAmount) + "$" + "\n\ntax: " + String.format("%.2f", totalAmount*0.13)+ "$" + "\n\nTotal:" + String.format("%.2f", totalAmount*1.13) +"$");
 
         JScrollPane scroll = new JScrollPane(receiptArea);
         scroll.setBorder(BorderFactory.createTitledBorder("Your Receipt"));
