@@ -5,7 +5,7 @@ public class Entrees extends JFrame {
     private Display display;
     private String[] entrees = {"Hot Dog", "Elote", "Wonton Soup"};
     private double[] prices = {3.99, 4.99, 7.99};
-    private String[] imagePath = {"","images/elote.jpg",""};
+    private String[] imagePath = {"images/Hotdog.png","images/elote.jpg","images/Wonton.jpg"};
 
     public Entrees(Display display) {
         this.display = display;
