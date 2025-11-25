@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class MainCourse extends JFrame {
     private Display display;
-    private String[] entrees = {"Hot Dog", "Elote", "Wonton Soup"};
-    private double[] prices = {3.99, 4.99, 7.99};
+    private String[] mainCourse = {"Burger", "Pizza", "Steak"};
+    private double[] prices = {14.99, 13.99, 29.99};
     private String[] imagePath = {"","",""};
 
     public MainCourse(Display display) {
@@ -28,8 +28,8 @@ public class MainCourse extends JFrame {
         menuItemsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Create MenuItem for each entree
-        for (int i = 0; i < entrees.length; i++) {
-            MenuItem item = new MenuItem(entrees[i], prices[i],imagePath[i], display);
+        for (int i = 0; i < mainCourse.length; i++) {
+            MenuItem item = new MenuItem(mainCourse[i], prices[i],imagePath[i], display);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
