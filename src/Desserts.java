@@ -5,7 +5,7 @@ public class Desserts extends JFrame {
     private Display display;
     private String[] desserts = {"Ice Cream", "Cheesecake", "Tres Leches"};
     private double[] prices = {7.99, 9.99, 6.99};
-    private String[] imagePath = {"images/iceCream.jpg","images/cheeseCake.jpg",""};
+    private String[] imagePath = {"images/iceCream.jpg","images/cheeseCake.jpg","images/tresLeches.jpg"};
 
     public Desserts(Display display) {
         this.display = display;
