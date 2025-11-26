@@ -7,6 +7,18 @@ public class MainCourse extends JFrame {
     private double[] prices = {14.99, 13.99, 29.99};
     private String[] imagePath = {"","",""};
 
+    // Nutritional information for each main course
+    private NutritionalInfo[] nutritionalInfos = {
+            // Burger: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+            new NutritionalInfo("Burger", 540, 250, 28.0, 45.0, 26.0, 8.0, 980, 3.0),
+
+            // Pizza (slice)
+            new NutritionalInfo("Pizza", 285, 120, 12.0, 36.0, 10.0, 3.5, 640, 2.5),
+
+            // Steak
+            new NutritionalInfo("Steak", 680, 300, 62.0, 2.0, 45.0, 0.0, 650, 0.0)
+    };
+
     public MainCourse(Display display) {
         this.display = display;
 
@@ -27,9 +39,9 @@ public class MainCourse extends JFrame {
         menuItemsPanel.setLayout(new BoxLayout(menuItemsPanel, BoxLayout.Y_AXIS));
         menuItemsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Create MenuItem for each entree
+        // Create MenuItem for each main course with nutritional info
         for (int i = 0; i < mainCourse.length; i++) {
-            MenuItem item = new MenuItem(mainCourse[i], prices[i],imagePath[i], display);
+            MenuItem item = new MenuItem(mainCourse[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }

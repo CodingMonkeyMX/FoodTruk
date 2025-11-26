@@ -3,9 +3,21 @@ import java.awt.*;
 
 public class Drinks extends JFrame {
     private Display display;
-    private String[] drinks = {"Coca cola", "Orange Juice", "Water Bottle"};
+    private String[] drinks = {"Coca Cola", "Orange Juice", "Water Bottle"};
     private double[] prices = {3.99, 3.99, 2.99};
     private String[] imagePath = {"","",""};
+
+    // Nutritional information for each drink
+    private NutritionalInfo[] nutritionalInfos = {
+            // Coca Cola (12 oz can): name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+            new NutritionalInfo("Coca Cola", 140, 355, 0.0, 39.0, 0.0, 39.0, 45, 0.0),
+
+            // Orange Juice (12 oz)
+            new NutritionalInfo("Orange Juice", 168, 355, 2.5, 40.0, 0.5, 33.0, 2, 0.7),
+
+            // Water Bottle (16.9 oz / 500ml)
+            new NutritionalInfo("Water Bottle", 0, 500, 0.0, 0.0, 0.0, 0.0, 0, 0.0)
+    };
 
     public Drinks(Display display) {
         this.display = display;
@@ -27,9 +39,9 @@ public class Drinks extends JFrame {
         menuItemsPanel.setLayout(new BoxLayout(menuItemsPanel, BoxLayout.Y_AXIS));
         menuItemsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Create MenuItem for each entree
+        // Create MenuItem for each drink with nutritional info
         for (int i = 0; i < drinks.length; i++) {
-            MenuItem item = new MenuItem(drinks[i], prices[i],imagePath[i], display);
+            MenuItem item = new MenuItem(drinks[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }

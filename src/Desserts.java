@@ -7,6 +7,18 @@ public class Desserts extends JFrame {
     private double[] prices = {7.99, 9.99, 6.99};
     private String[] imagePath = {"images/iceCream.jpg","images/cheeseCake.jpg","images/tresLeches.jpg"};
 
+    // Nutritional information for each dessert
+    private NutritionalInfo[] nutritionalInfos = {
+            // Ice Cream: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+            new NutritionalInfo("Ice Cream", 350, 150, 5.0, 42.0, 18.0, 35.0, 120, 0.5),
+
+            // Cheesecake
+            new NutritionalInfo("Cheesecake", 450, 180, 8.0, 48.0, 25.0, 38.0, 380, 1.0),
+
+            // Tres Leches Cake
+            new NutritionalInfo("Tres Leches", 380, 200, 9.0, 55.0, 14.0, 42.0, 240, 0.8)
+    };
+
     public Desserts(Display display) {
         this.display = display;
 
@@ -27,9 +39,9 @@ public class Desserts extends JFrame {
         menuItemsPanel.setLayout(new BoxLayout(menuItemsPanel, BoxLayout.Y_AXIS));
         menuItemsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Create MenuItem for each entree
+        // Create MenuItem for each dessert with nutritional info
         for (int i = 0; i < desserts.length; i++) {
-            MenuItem item = new MenuItem(desserts[i], prices[i],imagePath[i], display);
+            MenuItem item = new MenuItem(desserts[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }

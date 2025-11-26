@@ -8,12 +8,15 @@ public class MenuItem extends JPanel {
     private JLabel nameLabel;
     private JLabel priceLabel;
     private JButton orderButton;
+    private JButton nutritionButton;
     private Display display;
+    private NutritionalInfo nutritionalInfo;
 
-    public MenuItem(String name, double price, String imagePath, Display display) {
+    public MenuItem(String name, double price, String imagePath, Display display, NutritionalInfo nutritionalInfo) {
         this.name = name;
         this.price = price;
         this.display = display;
+        this.nutritionalInfo = nutritionalInfo;
 
         // Set up the panel with more appealing design
         setLayout(new BorderLayout(15, 15));
@@ -62,6 +65,11 @@ public class MenuItem extends JPanel {
         infoPanel.add(Box.createVerticalStrut(8));
         infoPanel.add(priceLabel);
 
+        // Create buttons panel (stacked vertically)
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
+        buttonsPanel.setBackground(Color.WHITE);
+
         // Create order button - improved design
         orderButton = new JButton("Order");
         orderButton.setBackground(new Color(33, 150, 243));
@@ -69,10 +77,24 @@ public class MenuItem extends JPanel {
         orderButton.setFont(new Font("Arial", Font.BOLD, 16));
         orderButton.setFocusPainted(false);
         orderButton.setBorderPainted(false);
-        orderButton.setPreferredSize(new Dimension(100, 100));
+        orderButton.setPreferredSize(new Dimension(100, 45));
+        orderButton.setMaximumSize(new Dimension(100, 45));
         orderButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        orderButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Add hover effect
+        // Create nutrition button
+        nutritionButton = new JButton("Nutrition");
+        nutritionButton.setBackground(new Color(255, 152, 0));
+        nutritionButton.setForeground(Color.WHITE);
+        nutritionButton.setFont(new Font("Arial", Font.BOLD, 12));
+        nutritionButton.setFocusPainted(false);
+        nutritionButton.setBorderPainted(false);
+        nutritionButton.setPreferredSize(new Dimension(100, 45));
+        nutritionButton.setMaximumSize(new Dimension(100, 45));
+        nutritionButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        nutritionButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // Add hover effects for order button
         orderButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 orderButton.setBackground(new Color(25, 118, 210));
@@ -82,31 +104,81 @@ public class MenuItem extends JPanel {
             }
         });
 
+        // Add hover effects for nutrition button
+        nutritionButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nutritionButton.setBackground(new Color(251, 140, 0));
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nutritionButton.setBackground(new Color(255, 152, 0));
+            }
+        });
+
         orderButton.addActionListener(e -> handleOrder());
+        nutritionButton.addActionListener(e -> showNutritionalInfo());
+
+        // Add buttons to panel with spacing
+        buttonsPanel.add(orderButton);
+        buttonsPanel.add(Box.createVerticalStrut(10));
+        buttonsPanel.add(nutritionButton);
 
         // Layout
         add(imageLabel, BorderLayout.WEST);
         add(infoPanel, BorderLayout.CENTER);
-        add(orderButton, BorderLayout.EAST);
+        add(buttonsPanel, BorderLayout.EAST);
 
         setPreferredSize(new Dimension(450, 120));
     }
 
     private void handleOrder() {
-        String input = JOptionPane.showInputDialog(this,"Enter quantity for " + name + ":","Order Quantity", JOptionPane.QUESTION_MESSAGE);
+        String input = JOptionPane.showInputDialog(this,
+                "Enter quantity for " + name + ":",
+                "Order Quantity",
+                JOptionPane.QUESTION_MESSAGE);
 
         if (input != null && !input.trim().isEmpty()) {
             try {
                 int quantity = Integer.parseInt(input.trim());
                 if (quantity > 0) {
                     display.addToOrder(name, price, quantity);
-                    JOptionPane.showMessageDialog(this,quantity + "x " + name + " added to order!","Success",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(this,
+                            quantity + "x " + name + " added to order!",
+                            "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                    JOptionPane.showMessageDialog(this,"Please enter a positive number.","Invalid Quantity",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this,
+                            "Please enter a positive number.",
+                            "Invalid Quantity",
+                            JOptionPane.ERROR_MESSAGE);
                 }
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this,"Please enter a valid number.","Invalid Input",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,
+                        "Please enter a valid number.",
+                        "Invalid Input",
+                        JOptionPane.ERROR_MESSAGE);
             }
+        }
+    }
+
+    private void showNutritionalInfo() {
+        if (nutritionalInfo != null) {
+            JTextArea textArea = new JTextArea(nutritionalInfo.getFormattedInfo());
+            textArea.setEditable(false);
+            textArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+            textArea.setBackground(new Color(250, 250, 250));
+
+            JScrollPane scrollPane = new JScrollPane(textArea);
+            scrollPane.setPreferredSize(new Dimension(350, 400));
+
+            JOptionPane.showMessageDialog(this,
+                    scrollPane,
+                    "Nutritional Facts - " + name,
+                    JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this,
+                    "Nutritional information not available for this item.",
+                    "Not Available",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }
 

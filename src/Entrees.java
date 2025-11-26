@@ -7,6 +7,18 @@ public class Entrees extends JFrame {
     private double[] prices = {3.99, 4.99, 7.99};
     private String[] imagePath = {"images/Hotdog.png","images/elote.jpg","images/Wonton.jpg"};
 
+    // Nutritional information for each item
+    private NutritionalInfo[] nutritionalInfos = {
+            // Hot Dog: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+            new NutritionalInfo("Hot Dog", 290, 150, 10.5, 25.0, 16.0, 3.5, 810, 1.5),
+
+            // Elote (Mexican Street Corn)
+            new NutritionalInfo("Elote", 220, 200, 6.0, 28.0, 11.0, 5.0, 450, 3.5),
+
+            // Wonton Soup
+            new NutritionalInfo("Wonton Soup", 180, 350, 12.0, 22.0, 5.0, 2.0, 920, 2.0)
+    };
+
     public Entrees(Display display) {
         this.display = display;
 
@@ -27,9 +39,9 @@ public class Entrees extends JFrame {
         menuItemsPanel.setLayout(new BoxLayout(menuItemsPanel, BoxLayout.Y_AXIS));
         menuItemsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Create MenuItem for each entree
+        // Create MenuItem for each entree with nutritional info
         for (int i = 0; i < entrees.length; i++) {
-            MenuItem item = new MenuItem(entrees[i], prices[i], imagePath[i],display);
+            MenuItem item = new MenuItem(entrees[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
