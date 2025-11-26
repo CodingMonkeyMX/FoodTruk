@@ -5,7 +5,19 @@ public class Drinks extends JFrame {
     private Display display;
     private String[] drinks = {"Coca cola", "Orange Juice", "Fiji Water Bottle"};
     private double[] prices = {3.99, 3.99, 2.99};
-    private String[] imagePath = {"images/coke1.png","images/Oj.png","images/fiji.jpg"};
+    private String[] imagePath = {"images/Coke1.png","images/Oj.png","images/fiji.jpg"};
+
+    // Nutritional information for each drink
+    private NutritionalInfo[] nutritionalInfos = {
+            // Coca Cola (12 oz can): name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+            new NutritionalInfo("Coca Cola", 140, 355, 0.0, 39.0, 0.0, 39.0, 45, 0.0),
+
+            // Orange Juice (12 oz)
+            new NutritionalInfo("Orange Juice", 168, 355, 2.5, 40.0, 0.5, 33.0, 2, 0.7),
+
+            // Water Bottle (16.9 oz / 500ml)
+            new NutritionalInfo("Water Bottle", 0, 500, 0.0, 0.0, 0.0, 0.0, 0, 0.0)
+    };
 
     public Drinks(Display display) {
         this.display = display;
