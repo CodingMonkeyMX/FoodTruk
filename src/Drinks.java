@@ -29,7 +29,7 @@ public class Drinks extends JFrame {
 
         // Create MenuItem for each entree
         for (int i = 0; i < drinks.length; i++) {
-            MenuItem item = new MenuItem(drinks[i], prices[i],imagePath[i], display);
+            MenuItem item = new MenuItem(drinks[i], prices[i],imagePath[i], display ,nutritionalInfos[i]);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
