@@ -148,8 +148,13 @@ public class Display extends JFrame {
 
             // menu panel buttons
             entrees = new JButton("Entrees");
-            mains = new JButton("Mains");
-            desserts = new JButton("Desserts");
+        JButton mains = new JButton(
+                "<html>Mains <font color='yellow'>(</font>"
+                        + "<font color='red'>HOT DEAL!</font>"
+                        + "<font color='yellow'>)</font></html>"
+        );
+
+        desserts = new JButton("Desserts");
             drinks = new JButton("Drinks");
 
             entrees.setBackground(Color.white);
