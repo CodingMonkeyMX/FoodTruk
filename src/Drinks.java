@@ -4,7 +4,7 @@ import java.awt.*;
 public class Drinks extends JFrame {
     private Display display;
     private String[] drinks = {"Coca cola", "Orange Juice", "Fiji Water Bottle"};
-    private double[] prices = {3.99, 3.99, 2.99};
+    private double[] prices = {3.99, 3.99, 10.99};
     private String[] imagePath = {"images/Coke1.png","images/Oj.png","images/fiji.jpg"};
 
     // Nutritional information for each drink
