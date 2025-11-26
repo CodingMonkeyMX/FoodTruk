@@ -5,7 +5,7 @@ public class MainCourse extends JFrame {
     private Display display;
     private String[] mainCourse = {"Burger", "Pizza", "Steak"};
     private double[] prices = {14.99, 13.99, 29.99};
-    private String[] imagePath = {"","",""};
+    private String[] imagePath = {"","images/pizza.jpg",""};
 
     // Nutritional information for each main course
     private NutritionalInfo[] nutritionalInfos = {
