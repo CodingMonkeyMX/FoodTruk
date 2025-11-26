@@ -1,12 +1,8 @@
-21x Hot Dog - $83.79
-21x Wonton Soup - $167.79
-25x Ice Cream - $199.75
-21x Cheesecake - $209.79
-44x Coca cola - $175.56
+12x Hot Dog - $47.88
 ------------------------------------------------
 
-Amount: 836.68$
+Amount: 47.88$
 
-tax: 108.77$
+tax: 6.22$
 
-Total:945.45$
+Total:54.10$
