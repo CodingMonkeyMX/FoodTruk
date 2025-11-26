@@ -89,7 +89,7 @@ public class Display extends JFrame {
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLayout(null);
 
-            title = new JLabel("FoodTruck App");
+            title = new JLabel("Jebidiah's Menu");
             title.setBounds(360, 0, 250, 40);
             this.add(title);
             title.setFont(new Font("Arial", Font.BOLD, 24));
