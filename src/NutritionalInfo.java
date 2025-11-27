@@ -43,7 +43,7 @@ public class NutritionalInfo {
         info.append(String.format("Item: %s\n\n", itemName));
         info.append(String.format("Serving Size: %.0fg\n\n", weight));
         info.append("───────────────────────────────────\n");
-        info.append(String.format("Calories:        %d kcal\n\n", calories));
+        info.append(String.format("Calories:        %d cal\n\n", calories));
         info.append("───────────────────────────────────\n");
         info.append(String.format("Total Fat:       %.1fg\n", fat));
         info.append(String.format("Carbohydrates:   %.1fg\n", carbs));
