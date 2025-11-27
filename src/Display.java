@@ -43,7 +43,7 @@ public class Display extends JFrame {
 
 
     private void Checkout() {
-        new Checkout(orderList, receiptInfo.getText(), totalAmount);
+        new Checkout(receiptInfo.getText(), totalAmount);
             dispose();
     }
 

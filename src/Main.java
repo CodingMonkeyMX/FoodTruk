@@ -1,5 +1,3 @@
-public class Main {
-    public static void main() {
-        new Display();
-    }
+void main() {
+    new Display();
 }

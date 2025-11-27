@@ -3,14 +3,12 @@ import java.awt.*;
 import java.io.File;
 
 public class MenuItem extends JPanel {
-    private String name;
-    private double price;
-    private JLabel nameLabel;
-    private JLabel priceLabel;
-    private JButton orderButton;
-    private JButton nutritionButton;
-    private Display display;
-    private NutritionalInfo nutritionalInfo;
+    private final String name;
+    private final double price;
+    private final JButton orderButton;
+    private final JButton nutritionButton;
+    private final Display display;
+    private final NutritionalInfo nutritionalInfo;
 
     public MenuItem(String name, double price, String imagePath, Display display, NutritionalInfo nutritionalInfo) {
         this.name = name;
@@ -48,12 +46,12 @@ public class MenuItem extends JPanel {
         imageLabel.setBorder(BorderFactory.createLineBorder(new Color(230, 230, 230), 2));
 
         // Create name label - larger and bolder
-        nameLabel = new JLabel(name);
+        JLabel nameLabel = new JLabel(name);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         nameLabel.setForeground(new Color(50, 50, 50));
 
         // Create price label - more prominent
-        priceLabel = new JLabel(String.format("$%.2f", price));
+        JLabel priceLabel = new JLabel(String.format("$%.2f", price));
         priceLabel.setFont(new Font("Arial", Font.BOLD, 18));
         priceLabel.setForeground(new Color(46, 125, 50));
 
@@ -114,8 +112,8 @@ public class MenuItem extends JPanel {
             }
         });
 
-        orderButton.addActionListener(e -> handleOrder());
-        nutritionButton.addActionListener(e -> showNutritionalInfo());
+        orderButton.addActionListener(_ -> handleOrder());
+        nutritionButton.addActionListener(_ -> showNutritionalInfo());
 
         // Add buttons to panel with spacing
         buttonsPanel.add(orderButton);
@@ -182,11 +180,4 @@ public class MenuItem extends JPanel {
         }
     }
 
-    public String getItemName() {
-        return name;
-    }
-
-    public double getPrice() {
-        return price;
-    }
 }

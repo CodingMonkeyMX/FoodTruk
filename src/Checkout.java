@@ -2,11 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Checkout extends JFrame {
 
-    public Checkout(ArrayList<?> orderList, String receiptText, double totalAmount) {
+    public Checkout(String receiptText, double totalAmount) {
 
         setTitle("Checkout");
         setSize(400, 500);
@@ -34,7 +33,7 @@ public class Checkout extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout());
 
-        JButton confirm = new JButton("Confirm Purchase");
+        JButton confirm = new JButton("Payment options");
         JButton save = new JButton("Save Receipt");
         JButton cancel = new JButton("Cancel");
 
@@ -54,17 +53,11 @@ public class Checkout extends JFrame {
         add(bottomPanel, BorderLayout.SOUTH);
 
         // Button actions
-        cancel.addActionListener(e -> dispose());
+        cancel.addActionListener(_ -> dispose());
 
-        confirm.addActionListener(e -> {
-            JOptionPane.showMessageDialog(this,
-                    "Payment Completed!\nThank you for your purchase.",
-                    "Success",
-                    JOptionPane.INFORMATION_MESSAGE);
-            dispose();
-        });
+        confirm.addActionListener(_ -> new CheckOutMenu());
 
-        save.addActionListener(e -> {
+        save.addActionListener(_ -> {
             try (FileWriter writer = new FileWriter("receipt.txt")) {
                 writer.write(receiptArea.getText());
                 JOptionPane.showMessageDialog(this,
