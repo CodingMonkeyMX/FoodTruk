@@ -2,25 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Entrees extends JFrame {
-    private Display display;
-    private String[] entrees = {"Hot Dog", "Elote", "Wonton Soup"};
-    private double[] prices = {3.99, 4.99, 7.99};
-    private String[] imagePath = {"images/Hotdog.png","images/elote.jpg","images/Wonton.jpg"};
-
-    // Nutritional information for each item
-    private NutritionalInfo[] nutritionalInfos = {
-            // Hot Dog: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
-            new NutritionalInfo("Hot Dog", 290, 150, 10.5, 25.0, 16.0, 3.5, 810, 1.5),
-
-            // Elote (Mexican Street Corn)
-            new NutritionalInfo("Elote", 220, 200, 6.0, 28.0, 11.0, 5.0, 450, 3.5),
-
-            // Wonton Soup
-            new NutritionalInfo("Wonton Soup", 180, 350, 12.0, 22.0, 5.0, 2.0, 920, 2.0)
-    };
 
     public Entrees(Display display) {
-        this.display = display;
 
         // Set up the frame
         setTitle("Entrees Menu");
@@ -40,8 +23,9 @@ public class Entrees extends JFrame {
         menuItemsPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Create MenuItem for each entree with nutritional info
+        String[] entrees = {"Hot Dog", "Elote", "Wonton Soup"};
         for (int i = 0; i < entrees.length; i++) {
-            MenuItem item = new MenuItem(entrees[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
+            MenuItem item = getMenuItem(display, entrees, i);
             menuItemsPanel.add(item);
             menuItemsPanel.add(Box.createRigidArea(new Dimension(0, 10)));
         }
@@ -57,7 +41,7 @@ public class Entrees extends JFrame {
         closeButton.setFont(new Font("Arial", Font.BOLD, 14));
         closeButton.setBackground(new Color(158, 158, 158));
         closeButton.setForeground(Color.WHITE);
-        closeButton.addActionListener(e -> dispose());
+        closeButton.addActionListener(_ -> dispose());
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -65,5 +49,25 @@ public class Entrees extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
 
         setVisible(true);
+    }
+
+    private static MenuItem getMenuItem(Display display, String[] entrees, int i) {
+        double[] prices = {3.99, 4.99, 7.99};
+        String[] imagePath = {"images/Hotdog.png", "images/elote.jpg", "images/Wonton.jpg"};
+        // Nutritional information for each item
+        // Hot Dog: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+        // Elote (Mexican Street Corn)
+        // Wonton Soup
+        NutritionalInfo[] nutritionalInfos = {
+                // Hot Dog: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+                new NutritionalInfo("Hot Dog", 290, 150, 10.5, 25.0, 16.0, 3.5, 810, 1.5),
+
+                // Elote (Mexican Street Corn)
+                new NutritionalInfo("Elote", 220, 200, 6.0, 28.0, 11.0, 5.0, 450, 3.5),
+
+                // Wonton Soup
+                new NutritionalInfo("Wonton Soup", 180, 350, 12.0, 22.0, 5.0, 2.0, 920, 2.0)
+        };
+        return new MenuItem(entrees[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
     }
 }

@@ -4,24 +4,13 @@ import java.util.ArrayList;
 
 
 public class Display extends JFrame {
-    private final JLabel title;
-    private JPanel menuPanel;
-    private JPanel buttonBar;
-    private JPanel receipt;
-    private JButton checkOut;
-    private JButton clearOrder;
-    private JButton exit;
-    private JButton entrees;
-    private JButton mains;
-    private JButton desserts;
-    private JButton drinks;
 
-    private JTextArea receiptInfo;
-    private JLabel total;
-    private ArrayList<OrderItem> orderList;
+    private final JTextArea receiptInfo;
+    private final JLabel total;
+    private final ArrayList<OrderItem> orderList;
     private double totalAmount;
 
-    private class OrderItem {
+    private static class OrderItem {
         String name;
         double price;
         int quantity;
@@ -89,25 +78,25 @@ public class Display extends JFrame {
             setDefaultCloseOperation(EXIT_ON_CLOSE);
             setLayout(null);
 
-            title = new JLabel("Jebidiah's Menu");
+        JLabel title = new JLabel("Jedidiah's Menu");
             title.setBounds(360, 0, 250, 40);
             this.add(title);
             title.setFont(new Font("Arial", Font.BOLD, 24));
 
-            menuPanel = new JPanel();
+        JPanel menuPanel = new JPanel();
             menuPanel.setBounds(50,70,400,400);
             menuPanel.setLayout(new GridLayout(4,1));
             menuPanel.setBorder(BorderFactory.createTitledBorder("Menu"));
             this.add(menuPanel);
 
-            receipt = new JPanel();
+        JPanel receipt = new JPanel();
             receipt.setBounds(460,70,400,400);
             receipt.setLayout(null);
             receipt.setBorder(BorderFactory.createTitledBorder("Order"));
             this.add(receipt);
 
 
-            buttonBar = new JPanel();
+        JPanel buttonBar = new JPanel();
             buttonBar.setBounds(50,500,810,52);
             buttonBar.setLayout(new FlowLayout());
             this.add(buttonBar);
@@ -122,9 +111,9 @@ public class Display extends JFrame {
             receipt.add(total);
             total.setFont(new Font("Arial", Font.BOLD, 24));
 
-            checkOut = new JButton("CHECKOUT");
-            clearOrder = new JButton("CLEAR ORDER");
-            exit = new JButton("EXIT");
+        JButton checkOut = new JButton("CHECKOUT");
+        JButton clearOrder = new JButton("CLEAR ORDER");
+        JButton exit = new JButton("EXIT");
 
             checkOut.setFont(new Font("Arial", Font.BOLD, 14));
             clearOrder.setFont(new Font("Arial", Font.BOLD, 14));
@@ -138,24 +127,24 @@ public class Display extends JFrame {
             exit.setForeground(Color.WHITE);
 
            /* checkOut.addActionListener(e -> checkout()); */
-            clearOrder.addActionListener(e -> clearOrder());
-            exit.addActionListener(e -> System.exit(0));
-            checkOut.addActionListener(e -> Checkout());
+            clearOrder.addActionListener(_ -> clearOrder());
+            exit.addActionListener(_ -> System.exit(0));
+            checkOut.addActionListener(_ -> Checkout());
 
             buttonBar.add(checkOut);
             buttonBar.add(clearOrder);
             buttonBar.add(exit);
 
             // menu panel buttons
-            entrees = new JButton("Entrees");
+        JButton entrees = new JButton("Entrees");
         JButton mains = new JButton(
                 "<html>Mains <font color='yellow'>(</font>"
                         + "<font color='red'>HOT DEAL!</font>"
                         + "<font color='yellow'>)</font></html>"
         );
 
-        desserts = new JButton("Desserts");
-            drinks = new JButton("Drinks");
+        JButton desserts = new JButton("Desserts");
+        JButton drinks = new JButton("Drinks");
 
             entrees.setBackground(Color.white);
             mains.setBackground(Color.white);
@@ -172,10 +161,10 @@ public class Display extends JFrame {
             menuPanel.add(desserts);
             menuPanel.add(drinks);
 
-            entrees.addActionListener(e -> new Entrees(this));
-            mains.addActionListener(e -> new MainCourse(this));
-            desserts.addActionListener(e -> new Desserts(this));
-            drinks.addActionListener(e -> new Drinks(this));
+            entrees.addActionListener(_ -> new Entrees(this));
+            mains.addActionListener(_ -> new MainCourse(this));
+            desserts.addActionListener(_ -> new Desserts(this));
+            drinks.addActionListener(_ -> new Drinks(this));
 
         setVisible(true);
     }

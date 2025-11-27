@@ -68,7 +68,6 @@ public class Desserts extends JFrame {
                 // Tres Leches Cake
                 new NutritionalInfo("Tres Leches", 380, 200, 9.0, 55.0, 14.0, 42.0, 240, 0.8)
         };
-        MenuItem item = new MenuItem(desserts[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
-        return item;
+        return new MenuItem(desserts[i], prices[i], imagePath[i], display, nutritionalInfos[i]);
     }
 }
