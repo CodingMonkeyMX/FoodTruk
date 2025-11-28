@@ -55,9 +55,6 @@ public class Desserts extends JFrame {
         double[] prices = {7.99, 9.99, 6.99};
         String[] imagePath = {"images/iceCream.jpg", "images/cheeseCake.jpg", "images/tresLeches.jpg"};
         // Nutritional information for each dessert
-        // Ice Cream: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
-        // Cheesecake
-        // Tres Leches Cake
         NutritionalInfo[] nutritionalInfos = {
                 // Ice Cream: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
                 new NutritionalInfo("Ice Cream", 350, 150, 5.0, 42.0, 18.0, 35.0, 120, 0.5),

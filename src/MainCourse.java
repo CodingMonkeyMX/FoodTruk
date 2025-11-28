@@ -55,9 +55,6 @@ public class MainCourse extends JFrame {
         double[] prices = {14.99, 13.99, 29.99};
         String[] imagePath = {"images/burger.jpg", "images/pizza.jpg", "images/steak.png"};
         // Nutritional information for each main course
-        // Burger: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
-        // Pizza (slice)
-        // Steak
         NutritionalInfo[] nutritionalInfos = {
                 // Burger: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
                 new NutritionalInfo("Burger", 540, 250, 28.0, 45.0, 26.0, 8.0, 980, 3.0),

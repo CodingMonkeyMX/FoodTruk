@@ -101,10 +101,7 @@ public class Display extends JFrame {
         setLocationRelativeTo(null);
 
         // Create gradient background panel
-        GradientPanel mainPanel = new GradientPanel(
-                new Color(240, 242, 245),
-                new Color(209, 216, 224)
-        );
+        GradientPanel mainPanel = new GradientPanel(new Color(240, 242, 245),new Color(209, 216, 224));
         mainPanel.setLayout(null);
         setContentPane(mainPanel);
 
@@ -119,18 +116,15 @@ public class Display extends JFrame {
         JLabel subtitle = new JLabel("Unfair prices? Call us, at (248)-434-5508");
         subtitle.setBounds(333, 60, 300, 25);
         subtitle.setFont(new Font("Segoe UI", Font.ITALIC, 14));
-        subtitle.setForeground(new Color(127, 140, 141));
+        subtitle.setForeground(new Color(127, 140, 141)); //text colour jebidiahness
         mainPanel.add(subtitle);
 
-        // Menu panel with modern styling
+        // Menu panel with fancy
         JPanel menuPanel = new JPanel();
         menuPanel.setBounds(50, 110, 420, 430);
         menuPanel.setLayout(new GridLayout(4, 1, 0, 15));
         menuPanel.setBackground(new Color(255, 255, 255, 0));
-        menuPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true),
-                BorderFactory.createEmptyBorder(15, 15, 15, 15)
-        ));
+        menuPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true), BorderFactory.createEmptyBorder(15, 15, 15, 15)));
         mainPanel.add(menuPanel);
 
         // Receipt panel with card-like design
@@ -138,17 +132,14 @@ public class Display extends JFrame {
         receiptPanel.setBounds(490, 110, 420, 430);
         receiptPanel.setLayout(null);
         receiptPanel.setBackground(Color.WHITE);
-        receiptPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true),
-                BorderFactory.createEmptyBorder(15, 15, 15, 15)
-        ));
+        receiptPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true), BorderFactory.createEmptyBorder(15, 15, 15, 15)));
         mainPanel.add(receiptPanel);
 
         // Receipt title
         JLabel receiptTitle = new JLabel("Your Order");
         receiptTitle.setBounds(15, 5, 200, 30);
         receiptTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
-        receiptTitle.setForeground(new Color(52, 73, 94));
+        receiptTitle.setForeground(new Color(52, 73, 94)); // elito notew - text colour
         receiptPanel.add(receiptTitle);
 
         // Receipt text area with scroll
@@ -157,8 +148,7 @@ public class Display extends JFrame {
         receiptInfo.setEditable(false);
         receiptInfo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         receiptInfo.setBackground(new Color(250, 250, 250));
-        receiptInfo.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1), BorderFactory.createEmptyBorder(10, 10, 10, 10)
-        ));
+        receiptInfo.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1), BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 
         JScrollPane scrollPane = new JScrollPane(receiptInfo);
         scrollPane.setBounds(15, 40, 380, 310);
@@ -170,8 +160,7 @@ public class Display extends JFrame {
         totalPanel.setBounds(15, 360, 380, 50);
         totalPanel.setBackground(new Color(46, 204, 113));
         totalPanel.setLayout(new BorderLayout());
-        totalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(39, 174, 96), 2, true), BorderFactory.createEmptyBorder(8, 15, 8, 15)
-        ));
+        totalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(39, 174, 96), 2, true), BorderFactory.createEmptyBorder(8, 15, 8, 15)));
 
         total = new JLabel("Total: $0.00");
         total.setFont(new Font("Segoe UI", Font.BOLD, 24));
@@ -248,10 +237,7 @@ public class Display extends JFrame {
         button.setForeground(new Color(44, 62, 80));
         button.setFocusPainted(false);
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        button.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(accentColor, 3, true),
-                BorderFactory.createEmptyBorder(15, 20, 15, 20)
-        ));
+        button.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(accentColor, 3, true), BorderFactory.createEmptyBorder(15, 20, 15, 20)));
 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {

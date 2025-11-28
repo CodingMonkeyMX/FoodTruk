@@ -63,15 +63,9 @@ public class Checkout extends JFrame {
         save.addActionListener(_ -> {
             try (FileWriter writer = new FileWriter("receipt.txt")) {
                 writer.write(receiptArea.getText());
-                JOptionPane.showMessageDialog(this,
-                        "Receipt saved as receipt.txt",
-                        "Saved",
-                        JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Receipt saved as receipt.txt","Saved",JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this,
-                        "Error saving file: " + ex.getMessage(),
-                        "Error",
-                        JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Error saving file: " + ex.getMessage(),"Error",JOptionPane.ERROR_MESSAGE);
             }
         });
 

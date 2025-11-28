@@ -18,10 +18,7 @@ public class MenuItem extends JPanel {
 
         // Modern card-style design
         setLayout(new BorderLayout(15, 15));
-        setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true),
-                BorderFactory.createEmptyBorder(15, 15, 15, 15)
-        ));
+        setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true), BorderFactory.createEmptyBorder(15, 15, 15, 15)));
         setBackground(Color.WHITE);
         setMaximumSize(new Dimension(480, 140));
 
@@ -42,10 +39,7 @@ public class MenuItem extends JPanel {
             imageLabel.setBackground(new Color(236, 240, 241));
             imageLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 48));
         }
-        imageLabel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true),
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)
-        ));
+        imageLabel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true), BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         // Info panel
         JPanel infoPanel = new JPanel();
@@ -142,10 +136,7 @@ public class MenuItem extends JPanel {
         quantityField.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         panel.add(quantityField);
 
-        int result = JOptionPane.showConfirmDialog(this, panel,
-                "Order Quantity",
-                JOptionPane.OK_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
+        int result = JOptionPane.showConfirmDialog(this, panel,"Order Quantity",JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {
             String input = quantityField.getText();
@@ -154,21 +145,12 @@ public class MenuItem extends JPanel {
                     int quantity = Integer.parseInt(input.trim());
                     if (quantity > 0) {
                         display.addToOrder(name, price, quantity);
-                        JOptionPane.showMessageDialog(this,
-                                quantity + "x " + name + " added to your order!",
-                                "Added to Cart",
-                                JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, quantity + "x " + name + " added to your order!", "Added to Cart", JOptionPane.INFORMATION_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(this,
-                                "Please enter a positive number.",
-                                "Invalid Quantity",
-                                JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Please enter a positive number.", "Invalid Quantity", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(this,
-                            "Please enter a valid number.",
-                            "Invalid Input",
-                            JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Please enter a valid number.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -186,15 +168,9 @@ public class MenuItem extends JPanel {
             scrollPane.setPreferredSize(new Dimension(400, 450));
             scrollPane.setBorder(BorderFactory.createLineBorder(new Color(189, 195, 199), 2));
 
-            JOptionPane.showMessageDialog(this,
-                    scrollPane,
-                    "Nutritional Facts - " + name,
-                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, scrollPane, "Nutritional Facts - " + name, JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this,
-                    "Nutritional information not available for this item.",
-                    "Not Available",
-                    JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Nutritional information not available for this item.", "Not Available", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 }

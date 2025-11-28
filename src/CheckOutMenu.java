@@ -92,17 +92,11 @@ public class CheckOutMenu extends JFrame {
         proceedButton.addActionListener(_ -> {
             if (selectedPaymentButton != null) {
                 String method = selectedPaymentButton.getText();
-                JOptionPane.showMessageDialog(this,
-                        String.format("Processing payment with: %s\n\nTotal Amount: $%.2f\n\nThank you for your order!", method, totalWithTax),
-                        "Payment Confirmation",
-                        JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, String.format("Processing payment with: %s\n\nTotal Amount: $%.2f\n\nThank you for your order!", method, totalWithTax), "Payment Confirmation", JOptionPane.INFORMATION_MESSAGE);
                 // Close payment window and return to main menu
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(this,
-                        "Please select a payment method first.",
-                        "No Payment Method Selected",
-                        JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Please select a payment method first.","No Payment Method Selected", JOptionPane.WARNING_MESSAGE);
             }
         });
         return proceedButton;
@@ -112,10 +106,7 @@ public class CheckOutMenu extends JFrame {
         JPanel section = new JPanel();
         section.setLayout(new BorderLayout(10, 10));
         section.setBackground(Color.WHITE);
-        section.setBorder(BorderFactory.createCompoundBorder(
-                new LineBorder(new Color(220, 220, 220), 1, true),
-                new EmptyBorder(15, 15, 15, 15)
-        ));
+        section.setBorder(BorderFactory.createCompoundBorder(new LineBorder(new Color(220, 220, 220), 1, true), new EmptyBorder(15, 15, 15, 15)));
 
         // Title Label
         JLabel titleLabel = new JLabel(title);
@@ -146,10 +137,7 @@ public class CheckOutMenu extends JFrame {
         button.setBorderPainted(false);
         button.setPreferredSize(new Dimension(100, 60));
         button.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        button.setBorder(new CompoundBorder(
-                new LineBorder(new Color(189, 195, 199), 2, true),
-                new EmptyBorder(5, 10, 5, 10)
-        ));
+        button.setBorder(new CompoundBorder(new LineBorder(new Color(189, 195, 199), 2, true), new EmptyBorder(5, 10, 5, 10)));
 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -169,19 +157,13 @@ public class CheckOutMenu extends JFrame {
             // Deselect previous button
             if (selectedPaymentButton != null) {
                 selectedPaymentButton.setBackground(defaultColor);
-                selectedPaymentButton.setBorder(new CompoundBorder(
-                        new LineBorder(new Color(189, 195, 199), 2, true),
-                        new EmptyBorder(5, 10, 5, 10)
-                ));
+                selectedPaymentButton.setBorder(new CompoundBorder(new LineBorder(new Color(189, 195, 199), 2, true), new EmptyBorder(5, 10, 5, 10)));
             }
 
             // Select new button
             selectedPaymentButton = button;
             button.setBackground(selectedColor);
-            button.setBorder(new CompoundBorder(
-                    new LineBorder(new Color(39, 174, 96), 3, true),
-                    new EmptyBorder(5, 10, 5, 10)
-            ));
+            button.setBorder(new CompoundBorder(new LineBorder(new Color(39, 174, 96), 3, true), new EmptyBorder(5, 10, 5, 10)));
         });
 
         return button;

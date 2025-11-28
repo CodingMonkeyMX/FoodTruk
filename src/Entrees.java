@@ -55,9 +55,6 @@ public class Entrees extends JFrame {
         double[] prices = {3.99, 4.99, 7.99};
         String[] imagePath = {"images/Hotdog.png", "images/elote.jpg", "images/Wonton.jpg"};
         // Nutritional information for each item
-        // Hot Dog: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
-        // Elote (Mexican Street Corn)
-        // Wonton Soup
         NutritionalInfo[] nutritionalInfos = {
                 // Hot Dog: name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
                 new NutritionalInfo("Hot Dog", 290, 150, 10.5, 25.0, 16.0, 3.5, 810, 1.5),
