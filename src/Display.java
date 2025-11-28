@@ -128,8 +128,8 @@ public class Display extends JFrame {
         mainPanel.add(title);
 
         // Subtitle
-        JLabel subtitle = new JLabel("Fresh & Delicious");
-        subtitle.setBounds(385, 60, 200, 25);
+        JLabel subtitle = new JLabel("Unfair prices? Call us, at (248)-434-5508");
+        subtitle.setBounds(333, 60, 300, 25);
         subtitle.setFont(new Font("Segoe UI", Font.ITALIC, 14));
         subtitle.setForeground(new Color(127, 140, 141));
         mainPanel.add(subtitle);
@@ -156,11 +156,6 @@ public class Display extends JFrame {
         ));
         mainPanel.add(receiptPanel);
 
-        JLabel unfairPrices = new JLabel("Unfair prices? Call us, at (248)-434-5508 ", SwingConstants.CENTER);
-        unfairPrices.setFont(new Font("Arial", Font.ITALIC|Font.BOLD , 14));
-        unfairPrices.setBounds(50, 545, 420, 25);
-        unfairPrices.setForeground(new Color(231, 76, 60));
-        mainPanel.add(unfairPrices);
         // Receipt title
         JLabel receiptTitle = new JLabel("Your Order");
         receiptTitle.setBounds(15, 5, 200, 30);
