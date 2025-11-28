@@ -30,18 +30,6 @@ public class Display extends JFrame {
             this.color1 = color1;
             this.color2 = color2;
         }
-
-        @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-            int w = getWidth();
-            int h = getHeight();
-            GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
-            g2d.setPaint(gp);
-            g2d.fillRect(0, 0, w, h);
-        }
     }
 
     private void clearOrder() {
@@ -169,9 +157,7 @@ public class Display extends JFrame {
         receiptInfo.setEditable(false);
         receiptInfo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         receiptInfo.setBackground(new Color(250, 250, 250));
-        receiptInfo.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(220, 220, 220), 1),
-                BorderFactory.createEmptyBorder(10, 10, 10, 10)
+        receiptInfo.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1), BorderFactory.createEmptyBorder(10, 10, 10, 10)
         ));
 
         JScrollPane scrollPane = new JScrollPane(receiptInfo);
@@ -184,9 +170,7 @@ public class Display extends JFrame {
         totalPanel.setBounds(15, 360, 380, 50);
         totalPanel.setBackground(new Color(46, 204, 113));
         totalPanel.setLayout(new BorderLayout());
-        totalPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(39, 174, 96), 2, true),
-                BorderFactory.createEmptyBorder(8, 15, 8, 15)
+        totalPanel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(39, 174, 96), 2, true), BorderFactory.createEmptyBorder(8, 15, 8, 15)
         ));
 
         total = new JLabel("Total: $0.00");
@@ -216,10 +200,10 @@ public class Display extends JFrame {
         buttonBar.add(exit);
 
         // Menu category buttons
-        JButton entrees = createMenuButton("🥖 Entrees", new Color(231, 76, 60));
-        JButton mains = createMenuButton("🍔 Mains (HOT DEAL!)", new Color(230, 126, 34));
-        JButton desserts = createMenuButton("🍰 Desserts", new Color(155, 89, 182));
-        JButton drinks = createMenuButton("🥤 Drinks", new Color(52, 152, 219));
+        JButton entrees = createMenuButton("Entrees", new Color(231, 76, 60));
+        JButton mains = createMenuButton("Mains (HOT DEAL!)", new Color(230, 126, 34));
+        JButton desserts = createMenuButton("Desserts", new Color(155, 89, 182));
+        JButton drinks = createMenuButton("Drinks", new Color(52, 152, 219));
 
         menuPanel.add(entrees);
         menuPanel.add(mains);
