@@ -55,11 +55,8 @@ public class Drinks extends JFrame {
         double[] prices = {3.99, 3.99, 10.99};
         String[] imagePath = {"images/Coke1.png", "images/Oj.png", "images/fiji.jpg"};
         // Nutritional information for each drink
-        // Coca Cola (12 oz can): name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
-        // Orange Juice (12 oz)
-        // Water Bottle (16.9 oz / 500ml)
         NutritionalInfo[] nutritionalInfos = {
-                // Coca Cola (12 oz can): name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
+                // Coca-cola (12 oz can): name, calories, weight(g), protein(g), carbs(g), fat(g), sugar(g), sodium(mg), fiber(g)
                 new NutritionalInfo("Coca Cola", 140, 355, 0.0, 39.0, 0.0, 39.0, 45, 0.0),
 
                 // Orange Juice (12 oz)

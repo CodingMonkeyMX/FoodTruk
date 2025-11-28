@@ -4,8 +4,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Checkout extends JFrame {
+    private final double totalWithTax;
 
     public Checkout(String receiptText, double totalAmount) {
+        double tax = totalAmount * 0.13;
+        this.totalWithTax = totalAmount + tax;
 
         setTitle("Checkout");
         setSize(400, 500);
@@ -20,10 +23,7 @@ public class Checkout extends JFrame {
         add(title, BorderLayout.NORTH);
 
         // Receipt area
-        JTextArea receiptArea = new JTextArea();
-        receiptArea.setEditable(false);
-        receiptArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
-        receiptArea.setText(receiptText + "------------------------------------------------" + "\n\nAmount: " + String.format("%.2f", totalAmount) + "$" + "\n\ntax: " + String.format("%.2f", totalAmount*0.13)+ "$" + "\n\nTotal:" + String.format("%.2f", totalAmount*1.13) +"$");
+        JTextArea receiptArea = getJTextArea(receiptText, totalAmount, tax);
 
         JScrollPane scroll = new JScrollPane(receiptArea);
         scroll.setBorder(BorderFactory.createTitledBorder("Your Receipt"));
@@ -33,7 +33,7 @@ public class Checkout extends JFrame {
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout());
 
-        JButton confirm = new JButton("Payment options");
+        JButton confirm = new JButton("Payment Options");
         JButton save = new JButton("Save Receipt");
         JButton cancel = new JButton("Cancel");
 
@@ -55,7 +55,10 @@ public class Checkout extends JFrame {
         // Button actions
         cancel.addActionListener(_ -> dispose());
 
-        confirm.addActionListener(_ -> new CheckOutMenu());
+        confirm.addActionListener(_ -> {
+            new CheckOutMenu(totalWithTax);
+            dispose(); // Close checkout window when opening payment options
+        });
 
         save.addActionListener(_ -> {
             try (FileWriter writer = new FileWriter("receipt.txt")) {
@@ -66,12 +69,25 @@ public class Checkout extends JFrame {
                         JOptionPane.INFORMATION_MESSAGE);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this,
-                        "Error saving file",
+                        "Error saving file: " + ex.getMessage(),
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
         });
 
         setVisible(true);
+    }
+
+    private JTextArea getJTextArea(String receiptText, double totalAmount, double tax) {
+        JTextArea receiptArea = new JTextArea();
+        receiptArea.setEditable(false);
+        receiptArea.setFont(new Font("Monospaced", Font.PLAIN, 14));
+        receiptArea.setText(receiptText +
+                "------------------------------------------------\n\n" +
+                String.format("Subtotal: $%.2f\n", totalAmount) +
+                String.format("Tax (13%%): $%.2f\n", tax) +
+                "------------------------------------------------\n" +
+                String.format("Total: $%.2f", totalWithTax));
+        return receiptArea;
     }
 }

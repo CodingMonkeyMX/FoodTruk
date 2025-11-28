@@ -7,10 +7,13 @@ public class CheckOutMenu extends JFrame {
     private final Color selectedColor = new Color(46, 204, 113);
     private final Color defaultColor = new Color(236, 240, 241);
     private final Color hoverColor = new Color(189, 195, 199);
+    private final double totalWithTax;
 
-    public CheckOutMenu() {
+    public CheckOutMenu(double totalWithTax) {
+        this.totalWithTax = totalWithTax;
+
         setBounds(100, 100, 450, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("Payment Methods");
         setLayout(new BorderLayout(10, 10));
         getContentPane().setBackground(new Color(245, 247, 250));
@@ -20,7 +23,7 @@ public class CheckOutMenu extends JFrame {
         headerPanel.setBackground(new Color(41, 128, 185));
         headerPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
         JLabel headerLabel = new JLabel("Select Payment Method");
-        headerLabel.setFont(new Font("Segue UI", Font.BOLD, 24));
+        headerLabel.setFont(new Font("Arial", Font.BOLD, 24));
         headerLabel.setForeground(Color.WHITE);
         headerPanel.add(headerLabel);
         add(headerPanel, BorderLayout.NORTH);
@@ -69,7 +72,7 @@ public class CheckOutMenu extends JFrame {
 
     private JButton getJButton() {
         JButton proceedButton = new JButton("Proceed to Payment");
-        proceedButton.setFont(new Font("Segue UI", Font.BOLD, 16));
+        proceedButton.setFont(new Font("Arial", Font.BOLD, 16));
         proceedButton.setBackground(new Color(46, 204, 113));
         proceedButton.setForeground(Color.WHITE);
         proceedButton.setFocusPainted(false);
@@ -90,9 +93,11 @@ public class CheckOutMenu extends JFrame {
             if (selectedPaymentButton != null) {
                 String method = selectedPaymentButton.getText();
                 JOptionPane.showMessageDialog(this,
-                        "Processing payment with: " + method + "\n\nThank you for your order!",
+                        String.format("Processing payment with: %s\n\nTotal Amount: $%.2f\n\nThank you for your order!", method, totalWithTax),
                         "Payment Confirmation",
                         JOptionPane.INFORMATION_MESSAGE);
+                // Close payment window and return to main menu
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(this,
                         "Please select a payment method first.",
@@ -114,7 +119,7 @@ public class CheckOutMenu extends JFrame {
 
         // Title Label
         JLabel titleLabel = new JLabel(title);
-        titleLabel.setFont(new Font("Segue UI", Font.BOLD, 16));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         titleLabel.setForeground(new Color(52, 73, 94));
         section.add(titleLabel, BorderLayout.NORTH);
 
@@ -134,7 +139,7 @@ public class CheckOutMenu extends JFrame {
 
     private JButton createPaymentButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segue UI", Font.PLAIN, 14));
+        button.setFont(new Font("Arial", Font.PLAIN, 14));
         button.setBackground(defaultColor);
         button.setForeground(new Color(52, 73, 94));
         button.setFocusPainted(false);
@@ -145,7 +150,7 @@ public class CheckOutMenu extends JFrame {
                 new LineBorder(new Color(189, 195, 199), 2, true),
                 new EmptyBorder(5, 10, 5, 10)
         ));
-        
+
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 if (button != selectedPaymentButton) {
