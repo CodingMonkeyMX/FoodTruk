@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-
 public class Display extends JFrame {
 
     private final JTextArea receiptInfo;
@@ -22,6 +21,29 @@ public class Display extends JFrame {
         }
     }
 
+    // Custom panel with gradient background
+    static class GradientPanel extends JPanel {
+        private final Color color1;
+        private final Color color2;
+
+        public GradientPanel(Color color1, Color color2) {
+            this.color1 = color1;
+            this.color2 = color2;
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            int w = getWidth();
+            int h = getHeight();
+            GradientPaint gp = new GradientPaint(0, 0, color1, 0, h, color2);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, w, h);
+        }
+    }
+
     private void clearOrder() {
         int confirm = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to clear the entire order?",
@@ -38,7 +60,6 @@ public class Display extends JFrame {
     }
 
     private void Checkout() {
-        // Check if cart is empty
         if (orderList.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "Your cart is empty! Please add items before checking out.",
@@ -52,7 +73,6 @@ public class Display extends JFrame {
     }
 
     public void addToOrder(String itemName, double price, int quantity) {
-        // Check if item already exists in order
         boolean found = false;
         for (OrderItem item : orderList) {
             if (item.name.equals(itemName)) {
@@ -84,63 +104,108 @@ public class Display extends JFrame {
         total.setText(String.format("Total: $%.2f", totalAmount));
     }
 
-
     public Display() {
-        // Initialize order list
         orderList = new ArrayList<>();
         totalAmount = 0.0;
 
-        // initializing GUI's
-        setBounds(0, 0, 900, 600);
+        setBounds(0, 0, 950, 650);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(null);
+        setLocationRelativeTo(null);
 
+        // Create gradient background panel
+        GradientPanel mainPanel = new GradientPanel(
+                new Color(240, 242, 245),
+                new Color(209, 216, 224)
+        );
+        mainPanel.setLayout(null);
+        setContentPane(mainPanel);
+
+        // Styled title with shadow effect
         JLabel title = new JLabel("Jedidiah's Menu");
-        title.setBounds(360, 0, 250, 40);
-        this.add(title);
-        title.setFont(new Font("Arial", Font.BOLD, 24));
+        title.setBounds(340, 15, 300, 50);
+        title.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        title.setForeground(new Color(44, 62, 80));
+        mainPanel.add(title);
 
+        // Subtitle
+        JLabel subtitle = new JLabel("Fresh & Delicious");
+        subtitle.setBounds(385, 60, 200, 25);
+        subtitle.setFont(new Font("Segoe UI", Font.ITALIC, 14));
+        subtitle.setForeground(new Color(127, 140, 141));
+        mainPanel.add(subtitle);
+
+        // Menu panel with modern styling
         JPanel menuPanel = new JPanel();
-        menuPanel.setBounds(50, 70, 400, 400);
-        menuPanel.setLayout(new GridLayout(4, 1));
-        menuPanel.setBorder(BorderFactory.createTitledBorder("Menu"));
-        this.add(menuPanel);
+        menuPanel.setBounds(50, 110, 420, 430);
+        menuPanel.setLayout(new GridLayout(4, 1, 0, 15));
+        menuPanel.setBackground(new Color(255, 255, 255, 0));
+        menuPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true),
+                BorderFactory.createEmptyBorder(15, 15, 15, 15)
+        ));
+        mainPanel.add(menuPanel);
 
-        JPanel receipt = new JPanel();
-        receipt.setBounds(460, 70, 400, 400);
-        receipt.setLayout(null);
-        receipt.setBorder(BorderFactory.createTitledBorder("Order"));
-        this.add(receipt);
+        // Receipt panel with card-like design
+        JPanel receiptPanel = new JPanel();
+        receiptPanel.setBounds(490, 110, 420, 430);
+        receiptPanel.setLayout(null);
+        receiptPanel.setBackground(Color.WHITE);
+        receiptPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(189, 195, 199), 2, true),
+                BorderFactory.createEmptyBorder(15, 15, 15, 15)
+        ));
+        mainPanel.add(receiptPanel);
 
-        JPanel buttonBar = new JPanel();
-        buttonBar.setBounds(50, 500, 810, 52);
-        buttonBar.setLayout(new FlowLayout());
-        this.add(buttonBar);
+        // Receipt title
+        JLabel receiptTitle = new JLabel("Your Order");
+        receiptTitle.setBounds(15, 5, 200, 30);
+        receiptTitle.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        receiptTitle.setForeground(new Color(52, 73, 94));
+        receiptPanel.add(receiptTitle);
 
+        // Receipt text area with scroll
         receiptInfo = new JTextArea("");
-        receiptInfo.setBounds(5, 17, 390, 350);
+        receiptInfo.setBounds(15, 40, 380, 310);
         receiptInfo.setEditable(false);
-        receipt.add(receiptInfo);
+        receiptInfo.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        receiptInfo.setBackground(new Color(250, 250, 250));
+        receiptInfo.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(220, 220, 220), 1),
+                BorderFactory.createEmptyBorder(10, 10, 10, 10)
+        ));
+
+        JScrollPane scrollPane = new JScrollPane(receiptInfo);
+        scrollPane.setBounds(15, 40, 380, 310);
+        scrollPane.setBorder(BorderFactory.createLineBorder(new Color(220, 220, 220), 1));
+        receiptPanel.add(scrollPane);
+
+        // Total with background highlight
+        JPanel totalPanel = new JPanel();
+        totalPanel.setBounds(15, 360, 380, 50);
+        totalPanel.setBackground(new Color(46, 204, 113));
+        totalPanel.setLayout(new BorderLayout());
+        totalPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(39, 174, 96), 2, true),
+                BorderFactory.createEmptyBorder(8, 15, 8, 15)
+        ));
 
         total = new JLabel("Total: $0.00");
-        total.setBounds(5, 360, 250, 40);
-        receipt.add(total);
-        total.setFont(new Font("Arial", Font.BOLD, 24));
+        total.setFont(new Font("Segoe UI", Font.BOLD, 24));
+        total.setForeground(Color.WHITE);
+        totalPanel.add(total, BorderLayout.CENTER);
+        receiptPanel.add(totalPanel);
 
-        JButton checkOut = new JButton("CHECKOUT");
-        JButton clearOrder = new JButton("CLEAR ORDER");
-        JButton exit = new JButton("EXIT");
+        // Button bar
+        JPanel buttonBar = new JPanel();
+        buttonBar.setBounds(50, 560, 860, 60);
+        buttonBar.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonBar.setBackground(new Color(255, 255, 255, 0));
+        mainPanel.add(buttonBar);
 
-        checkOut.setFont(new Font("Arial", Font.BOLD, 14));
-        clearOrder.setFont(new Font("Arial", Font.BOLD, 14));
-        exit.setFont(new Font("Arial", Font.BOLD, 14));
-
-        checkOut.setBackground(new Color(76, 175, 80));
-        checkOut.setForeground(Color.WHITE);
-        clearOrder.setBackground(new Color(255, 152, 0));
-        clearOrder.setForeground(Color.WHITE);
-        exit.setBackground(new Color(244, 67, 54));
-        exit.setForeground(Color.WHITE);
+        // Styled buttons
+        JButton checkOut = createStyledButton("CHECKOUT", new Color(46, 204, 113), new Color(39, 174, 96));
+        JButton clearOrder = createStyledButton("CLEAR ORDER", new Color(243, 156, 18), new Color(211, 136, 16));
+        JButton exit = createStyledButton("EXIT", new Color(231, 76, 60), new Color(192, 57, 43));
 
         clearOrder.addActionListener(_ -> clearOrder());
         exit.addActionListener(_ -> System.exit(0));
@@ -150,26 +215,11 @@ public class Display extends JFrame {
         buttonBar.add(clearOrder);
         buttonBar.add(exit);
 
-        // menu panel buttons
-        JButton entrees = new JButton("Entrees");
-        JButton mains = new JButton(
-                "<html>Mains <font color='yellow'>(</font>"
-                        + "<font color='red'>HOT DEAL!</font>"
-                        + "<font color='yellow'>)</font></html>"
-        );
-
-        JButton desserts = new JButton("Desserts");
-        JButton drinks = new JButton("Drinks");
-
-        entrees.setBackground(Color.white);
-        mains.setBackground(Color.white);
-        desserts.setBackground(Color.white);
-        drinks.setBackground(Color.WHITE);
-
-        entrees.setBorder(BorderFactory.createRaisedBevelBorder());
-        mains.setBorder(BorderFactory.createRaisedBevelBorder());
-        desserts.setBorder(BorderFactory.createRaisedBevelBorder());
-        drinks.setBorder(BorderFactory.createRaisedBevelBorder());
+        // Menu category buttons
+        JButton entrees = createMenuButton("🥖 Entrees", new Color(231, 76, 60));
+        JButton mains = createMenuButton("🍔 Mains (HOT DEAL!)", new Color(230, 126, 34));
+        JButton desserts = createMenuButton("🍰 Desserts", new Color(155, 89, 182));
+        JButton drinks = createMenuButton("🥤 Drinks", new Color(52, 152, 219));
 
         menuPanel.add(entrees);
         menuPanel.add(mains);
@@ -182,5 +232,54 @@ public class Display extends JFrame {
         drinks.addActionListener(_ -> new Drinks(this));
 
         setVisible(true);
+    }
+
+    private JButton createStyledButton(String text, Color bgColor, Color hoverColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        button.setBackground(bgColor);
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setBorderPainted(false);
+        button.setPreferredSize(new Dimension(200, 45));
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createEmptyBorder(10, 25, 10, 25));
+
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(hoverColor);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(bgColor);
+            }
+        });
+
+        return button;
+    }
+
+    private JButton createMenuButton(String text, Color accentColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        button.setBackground(Color.WHITE);
+        button.setForeground(new Color(44, 62, 80));
+        button.setFocusPainted(false);
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(accentColor, 3, true),
+                BorderFactory.createEmptyBorder(15, 20, 15, 20)
+        ));
+
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setBackground(accentColor);
+                button.setForeground(Color.WHITE);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setBackground(Color.WHITE);
+                button.setForeground(new Color(44, 62, 80));
+            }
+        });
+
+        return button;
     }
 }
