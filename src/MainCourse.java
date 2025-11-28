@@ -10,6 +10,7 @@ public class MainCourse extends JFrame {
         setBounds(100, 100, 500, 800);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null);
 
         // Title label
         JLabel title = new JLabel("Mains", SwingConstants.CENTER);

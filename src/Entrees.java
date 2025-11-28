@@ -9,6 +9,7 @@ public class Entrees extends JFrame {
         setTitle("Entrees Menu");
         setBounds(100, 100, 500, 800);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
         // Title label
