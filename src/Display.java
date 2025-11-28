@@ -156,6 +156,11 @@ public class Display extends JFrame {
         ));
         mainPanel.add(receiptPanel);
 
+        JLabel unfairPrices = new JLabel("Unfair prices? Call us, at (248)-434-5508 ", SwingConstants.CENTER);
+        unfairPrices.setFont(new Font("Arial", Font.ITALIC|Font.BOLD , 14));
+        unfairPrices.setBounds(50, 545, 420, 25);
+        unfairPrices.setForeground(new Color(231, 76, 60));
+        mainPanel.add(unfairPrices);
         // Receipt title
         JLabel receiptTitle = new JLabel("Your Order");
         receiptTitle.setBounds(15, 5, 200, 30);
