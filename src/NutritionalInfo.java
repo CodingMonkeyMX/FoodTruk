@@ -1,12 +1,4 @@
-/**
- * @param weight  in grams
- * @param protein in grams
- * @param carbs   in grams
- * @param fat     in grams
- * @param sugar   in grams
- * @param sodium  in milligrams
- * @param fiber   in grams
- */
+
 public record NutritionalInfo(String itemName, int calories, double weight, double protein, double carbs, double fat,
                               double sugar, double sodium, double fiber) {
     // Format for display
