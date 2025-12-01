@@ -1,6 +1,5 @@
 
-public record NutritionalInfo(String itemName, int calories, double weight, double protein, double carbs, double fat,
-                              double sugar, double sodium, double fiber) {
+public record NutritionalInfo(String itemName, int calories, double weight, double protein, double carbs, double fat, double sugar, double sodium, double fiber) {
     // Format for display
     public String getFormattedInfo() {
 
